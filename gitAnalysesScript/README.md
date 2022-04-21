@@ -5,7 +5,7 @@ This project was built for read git log files. For each file, this script will e
 # Set Up
 Before anything, you must create a file named 'gitLogInfo.csv' that contains 3 columns:
  - Collaborator Name
- - Collaborator Project Name
+ - Collaborator Project Name (not required)
  - Path of the folder that contains the git log file belonging to the same developer and project 
  
 Example:
@@ -13,11 +13,16 @@ Example:
 Maria;ProjectName1;C:\\Users\\Adm\\Documents\\Logs\\logs_maria
 Pedro;ProjectName2;C:\\Users\\Adm\\Documents\\Logs\\logs_pedro
 ```
+OR
+```sh
+Maria;;C:\\Users\\Adm\\Documents\\Logs\\logs_maria
+Pedro;;C:\\Users\\Adm\\Documents\\Logs\\logs_pedro
+```
 
 There is a file in the project named _'config.properties'_ that contains some setup properties needed to run the script correctly.
 
  - **logInfo**: copy the folder path that contains the entrance info for the script (the file you created in the previous step) 
- - **resultsFilePath**: copy the folder path to input the results
+ - **resultsFilePath**: copy the folder path to input the results (the folder must exist)
  
  # Run the script
 Just run the 'MainAnalysis.java' class and check the results in the folder path that you set in 'resultsFilePath'.
