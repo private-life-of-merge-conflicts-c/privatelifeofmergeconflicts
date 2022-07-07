@@ -207,19 +207,32 @@ public class MainAnalysis {
 	}
 
 	public void removeCollaboratorAnalysisWithoutIntegration() {
-
-		HashMap<String, LogAnalysis> logsWithtIntegration = new HashMap<>();
+		HashMap<String, LogAnalysis> logsWithIntegration = new HashMap<>();
 
 		for(String analysisKey : collaboratorAnalysis.keySet()) {
 			LogAnalysis logAnalysis = collaboratorAnalysis.get(analysisKey);
 
 			if(logAnalysis.haveIntegration()) {
-				logsWithtIntegration.put(analysisKey, logAnalysis);
+				logsWithIntegration.put(analysisKey, logAnalysis);
 			}
 		}
 
-		setCollaboratorAnalysis(logsWithtIntegration);
+		setCollaboratorAnalysis(logsWithIntegration);
 	}
+
+	public void removeLogProjectsAnalysisWithoutIntegration() {
+		HashMap<String, LogAnalysis> logsWithIntegration = new HashMap<>();
+
+		for(String analysisKey : projectAnalysis.keySet()) {
+			LogAnalysis logAnalysis = projectAnalysis.get(analysisKey);
+
+			if(logAnalysis.haveIntegration()) {
+				logsWithIntegration.put(analysisKey, logAnalysis);
+			}
+		}
+		setProjectAnalysis(logsWithIntegration);
+	}
+
 
 	public String getLogInfo() {
 		return logInfo;
