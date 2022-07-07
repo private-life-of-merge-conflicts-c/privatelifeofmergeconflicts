@@ -64,7 +64,7 @@ public class MainAnalysis {
                 logAnalysis.calculateTotalFailedRebases();
                 logAnalysis.calculateIntegrationErrors();
                 
-                checkColaboratorLog(info[0], info[1], logAnalysis);
+                checkCollaboratorLog(info[0], logAnalysis);
 			  } 
 			br.close();
 		} catch (FileNotFoundException e) {
@@ -141,21 +141,16 @@ public class MainAnalysis {
 		}
 	}
 	
-	public void checkColaboratorLog(String collaboratorName, String projectName, LogAnalysis logAnalysis) {
+	public void checkCollaboratorLog(String collaboratorName, LogAnalysis logAnalysis) {
 		LogAnalysis currentLogAnalysis;
 
-		String collaboratorProjectName = collaboratorName;
-		if (projectName == null || !projectName.trim().isEmpty()) {
-			collaboratorProjectName = collaboratorProjectName.concat(" - " + projectName);
-		}
-
-		if(!collaboratorAnalysis.containsKey(collaboratorProjectName)) {
-			collaboratorAnalysis.put(collaboratorProjectName, logAnalysis);
+		if(!collaboratorAnalysis.containsKey(collaboratorName)) {
+			collaboratorAnalysis.put(collaboratorName, logAnalysis);
 			
 		} else {
-			currentLogAnalysis = collaboratorAnalysis.get(collaboratorProjectName);
+			currentLogAnalysis = collaboratorAnalysis.get(collaboratorName);
 			currentLogAnalysis.mergeLogAnalysis(logAnalysis);
-			collaboratorAnalysis.put(collaboratorProjectName, currentLogAnalysis);
+			collaboratorAnalysis.put(collaboratorName, currentLogAnalysis);
 		}
 	}
 
